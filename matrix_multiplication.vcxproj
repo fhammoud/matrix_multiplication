@@ -75,11 +75,24 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="resources\matrix1024.txt" />
+    <Text Include="resources\matrix128.txt" />
+    <Text Include="resources\matrix16.txt" />
+    <Text Include="resources\matrix2048.txt" />
+    <Text Include="resources\matrix512.txt" />
   </ItemGroup>
-  <ItemDefinitionGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <LibraryDependencies>m</LibraryDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-pthread</AdditionalDependencies>
+    </Link>
+    <RemotePostBuildEvent>
+      <Command>cp -r resources bin/x64/Debug</Command>
+    </RemotePostBuildEvent>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
