@@ -84,6 +84,9 @@
     <Text Include="resources\matrix2048.txt" />
     <Text Include="resources\matrix512.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <LibraryDependencies>m</LibraryDependencies>

@@ -29,20 +29,19 @@ int main(int argc, char *argv[])
 	double executionTime;
 	struct timeval start, end; //used for timing
 	gettimeofday(&start, NULL);
-	if (argc == 5) {
-		TT = atoi(argv[4]);
+	if (argc == 4) {
+		TT = atoi(argv[3]);
 	}
 	else {
 		TT = 256;
 	}
 	//========Variable Declaration========//
-	FILE *fr1, *fr2, *fw;
+	FILE *fr1, *fw;
 	char line[32000];
 
 	//==========File Reading==========// 
 	fr1 = fopen(argv[1], "r");
-	fr2 = fopen(argv[2], "r");
-	if (fr1 == NULL || fr2 == NULL) //If something goes wrong
+	if (fr1 == NULL) //If something goes wrong
 	{
 		printf("Error: Cannot open one of the input files.");
 		exit(1);
@@ -96,11 +95,11 @@ int main(int argc, char *argv[])
 	}
 
 	//Print to console
-	if (argc == 4)
+	if (argc == 3)
 		printMatrix();
 	else  //Print to file
 	{
-		fw = fopen(argv[3], "w");
+		fw = fopen(argv[2], "w");
 		if (fw == NULL)
 		{
 			printf("Error: cannot open output file.\n");
