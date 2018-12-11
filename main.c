@@ -61,14 +61,16 @@ int main(int argc, char *argv[])
 	fclose(fr1);
 
 	//===MAT 2===//
+	// Copy mat1
 	mat2 = (int **)malloc(sizeof(int *)*N);
-	fgets(line, 32000, fr2); //read line
-	for (int i = 0; i < N; i++)  //same dimension as other matrix
+	for (int i = 0; i < N; i++)
 	{
-		mat2[i] = parseMatrix(line); //Set each row to the array
-		fgets(line, 32000, fr2);
+		mat2[i] = (int *)malloc(sizeof(int)*N);
+		for (int j = 0; j < N; j++)
+		{
+			mat2[i][j] = mat1[i][j];
+		}
 	}
-	fclose(fr2);
 
 	//===Result Matrix===//
 	rMat = (int **)malloc(sizeof(int *)*N);

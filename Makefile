@@ -3,19 +3,16 @@ C_FLAGS := -g -Wall -Wextra -std=c11 -pthread
 
 LIBRARIES	:= -lm
 
-EXECUTABLE1	:= matrixmult_process.out
-EXECUTABLE2	:= matrixmult_thread.out
+EXECUTABLE	:= main.out
 
-all: $(EXECUTABLE1) $(EXECUTABLE2)
+all: $(EXECUTABLE)
 
 clean:
-	-$(RM) $(EXECUTABLE1) $(EXECUTABLE2)
+	-$(RM) $(EXECUTABLE)
 
 run: all
-	./$(EXECUTABLE1) ./$(EXECUTABLE2)
+	./$(EXECUTABLE)
 
-$(EXECUTABLE1): matrixmult_process.c
+$(EXECUTABLE): *.c
 	$(CC) $(C_FLAGS) $^ -o $@ $(LIBRARIES)
-
-$(EXECUTABLE2): matrixmult_thread.c
-	$(CC) $(C_FLAGS) $^ -o $@ $(LIBRARIES)
+	
